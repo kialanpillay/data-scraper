@@ -17,7 +17,7 @@ import java.util.Date;
 public class DataScraper {
 
 
-	public DataScraper() {
+	public DataScraper(int update) {
             
                 ArrayList<Integer>maleCases = new ArrayList<>();
                 ArrayList<Integer>localCases = new ArrayList<>();
@@ -28,7 +28,7 @@ public class DataScraper {
 		Document doc = null;
 
 		try {
-			doc = Jsoup.connect("http://www.nicd.ac.za/covid-19-update-23/").get();
+			doc = Jsoup.connect("http://www.nicd.ac.za/covid-19-update-" + update + "/").get();
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
@@ -114,7 +114,7 @@ public class DataScraper {
 	
 	public static void main (String args[]) {
 
-		new DataScraper();
+		new DataScraper(args[0]);
 	
 	}
 	
